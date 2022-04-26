@@ -1,0 +1,61 @@
+<div
+  class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--fixed kt-subheader--enabled kt-subheader--solid kt-aside--enabled kt-aside--fixed kt-page--loading">
+  <div class="kt-grid kt-grid--ver kt-grid--root">
+    <div class="kt-grid kt-grid--hor kt-grid--root  kt-login kt-login--v1" id="kt_login">
+      <div
+        class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--desktop kt-grid--ver-desktop kt-grid--hor-tablet-and-mobile">
+
+        <!--begin::Aside-->
+        <div class="kt-grid__item kt-grid__item--order-tablet-and-mobile-2 kt-grid kt-grid--hor kt-login__aside"
+          style="height: 80em;justify-content: center;">
+          <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver"
+            style="background-image: url(assets/img/utils/login-image.gif);max-height: 50em;max-width: 50em;">
+            <img src="../assets/img/utils/logo-image.gif" alt="">
+          </div>
+        </div>
+
+        <!--begin::Aside-->
+
+        <!--begin::Content-->
+        <div class="kt-grid__item kt-grid__item--fluid  kt-grid__item--order-tablet-and-mobile-1  kt-login__wrapper">
+
+          <!--begin::Body-->
+          <div class="kt-login__body">
+
+            <!--begin::Signin-->
+            <div class="kt-login__form">
+              <div class="kt-login__title">
+                <img src="../assets/img/utils/logo-image.png" style="max-width: 25em;max-height: 35em;" alt="">
+                <h3>BIENVENIDO</h3>
+              </div>
+              <!--begin::Form-->
+                    <form class="my-form" #loginForm="ngForm" class="login-form"
+                      (ngSubmit)="OnSubmit(Email.value,Password.value); loginForm.reset()">
+                      <mat-card-content>
+                        <mat-form-field class="full-width">
+                          <mat-label>Usser</mat-label>
+                          <input matInput type="text" placeholder="Usser" name="usser" #Email>
+                        </mat-form-field>
+                      </mat-card-content>
+                      <mat-card-content>
+                        <mat-form-field class="full-width">
+                          <mat-label>Password</mat-label>
+                          <input matInput type="password" placeholder="Password" name="password" #Password>
+                        </mat-form-field>
+                      </mat-card-content>
+                      <mat-card-actions>
+                        <button mat-raised-button color="primary" type="submit" class="btn btn-brand btn-elevate kt-login__btn-primary"
+                          style="border-radius: 25px; border-radius: 25px;padding: 1em 5em;">Iniciar Sesión</button>
+                      </mat-card-actions>
+                    </form>
+              <!--end::Form-->
+            </div>
+            <!--end::Signin-->
+          </div>
+          <!--end::Body-->
+        </div>
+        <!--end::Content-->
+      </div>
+    </div>
+  </div>
+</div>

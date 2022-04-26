@@ -1,0 +1,83 @@
+<div class="header-popup">
+  <mat-card style="padding-inline: 4rem; border-radius: 20px; height: 100%; padding-top: 2.5rem;">
+    <h4 style="font-size: 3.5rem; color:#2B4965; font-weight: 500;">Agregar Enfermedad</h4>
+  </mat-card>
+</div>
+
+<div class="body-popup">
+  <mat-card style="padding-inline: 4rem; border-radius: 20px; height: 100%; padding-top: 2.5rem;">
+    <div class="body.field">
+      <form [formGroup]="diseaseForm" (ngSubmit)="Accept()">
+        <!-- <div style="width: 100%; text-align: center;">
+          <mat-form-field appearance="standard" style="width: 70%;">
+            <mat-label>Codigo</mat-label>
+            <input matInput formControlName="code" placeholder="Ingresa aqui el codigo" #code>
+          </mat-form-field>
+        </div> -->
+        <div style="width: 100%; text-align: center;">
+          <mat-form-field appearance="standard" style="width: 70%;">
+            <mat-label>Enfermedad</mat-label>
+            <input matInput formControlName="disease" placeholder="Ingresa aqui la Enfermedad" #disease>
+          </mat-form-field>
+        </div>
+        <div style="width: 100%; text-align: center;">
+          <mat-form-field appearance="fill" style="width: 70%;">
+            <mat-label>Descripcion</mat-label>
+            <textarea matInput formControlName="description"></textarea>
+          </mat-form-field>
+        </div>
+        <!-- <div style="width: 100%; text-align: center;">
+          <mat-form-field appearance="standard" style="width: 100%;">
+            <mat-label>Descripcion</mat-label>
+            <input matInput formControlName="disease" placeholder="Escribe texto aqui..." #description>
+          </mat-form-field>
+        </div> -->
+        <div style="width: 100%; text-align: center;">
+          <mat-form-field appearance="fill">
+            <mat-label>Gravedad</mat-label>
+            <select formControlName="level" matNativeControl required>
+              <option value="1">Leve</option>
+              <option value="2">Moderado</option>
+              <option value="3">Grave</option>
+            </select>
+          </mat-form-field>
+        </div>
+
+        <!-- <div class="button-row" style="margin-bottom: 2rem;">
+          <button mat-stroked-button (click)="addRecomendation()" class="add-recomendation-button" type="submit" style="width: 500px; color: #2B4965;">Recomendacion</button>
+        </div> -->
+        <div style="width: 100%; text-align: center;">
+          <section class="example-section">
+            <!-- <mat-checkbox formControlName="recommendation" class="example-margin" value="checked" (click)="recommendationControl(checked)">Agregar Recomendacion</mat-checkbox> -->
+            <mat-checkbox formControlName="recommendation" class="example-margin" (click)="recommendationControl(checked)">Agregar Recomendacion</mat-checkbox>
+          </section>
+        </div>
+        <div *ngIf="checked">
+          <div style="width: 100%; text-align: center;">
+            <mat-form-field appearance="standard" style="width: 70%;">
+              <mat-label>Titulo Recomendacion</mat-label>
+              <input matInput formControlName="r_title" placeholder="Titulo Recomendacion" #r_title>
+              <!-- <input type="text" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto" />
+              <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                  {{option}}
+                </mat-option>
+              </mat-autocomplete> -->
+            </mat-form-field>
+          </div>
+          <div style="width: 100%; text-align: center;">
+            <mat-form-field appearance="fill" style="width: 70%;">
+              <mat-label>Descripcion Recomendacion</mat-label>
+              <textarea matInput formControlName="r_description"></textarea>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="button-row">
+          <button mat-button class="add-diseases-button" type="submit" style="color: #FFFFFF;">Aceptar</button>
+          <button mat-button mat-dialog-close class="add-diseases-button" style="color: #FFFFFF;">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </mat-card>
+</div>
+

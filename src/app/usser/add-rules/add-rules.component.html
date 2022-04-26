@@ -1,0 +1,87 @@
+<div class="header-popup">
+  <mat-card style="padding-inline: 4rem; border-radius: 20px; height: 100%; padding-top: 2.5rem;">
+    <h4 style="font-size: 3.5rem; color:#2B4965; font-weight: 500;">Agregar Regla</h4>
+  </mat-card>
+</div>
+
+<div class="body-popup">
+  <mat-card style="padding-inline: 4rem; border-radius: 20px; height: 100%; padding-top: 2.5rem;">
+    <div class="body.field">
+      <form [formGroup]="rulesForm" (ngSubmit)="Accept()">
+        <div style="width: 100%; text-align: center;">
+          <mat-form-field appearance="fill" style="width: 100%;">
+            <mat-label>Preguntas</mat-label>
+            <mat-select (selectionChange)="setQuestion($event)" formControlName="question" name="food">
+              <mat-option *ngFor="let question of questions" [value]="question.codigo">
+                {{question.descripcion}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div style="width: 100%; text-align: center;">
+          <section class="example-section">
+            <mat-checkbox formControlName="isMain" class="example-margin" (click)="setQuestionAsMain(checked)">Pregunta Inicial</mat-checkbox>
+          </section>
+        </div>
+        <div class="row" style="width: 100%; text-align: center;">
+          <mat-card style="width: 50%;">
+            <div style="display: grid;">
+              <mat-label>Pregunta SI</mat-label>
+                <div style="width: 100%; text-align: center;">
+                  <mat-form-field appearance="fill">
+                    <mat-label>Preguntas</mat-label>
+                    <mat-select formControlName="questionYes" name="food">
+                      <mat-option *ngFor="let question of questions" [value]="question.codigo">
+                        {{question.descripcion}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              <mat-label>Pregunta NO</mat-label>
+              <div style="width: 100%; text-align: center;">
+                <mat-form-field appearance="fill">
+                  <mat-label>Preguntas</mat-label>
+                  <mat-select formControlName="questionNot" name="food">
+                    <mat-option *ngFor="let question of questions" [value]="question.codigo">
+                      {{question.descripcion}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </mat-card>
+          <mat-card style="width: 50%;">
+            <div style="display: grid;">
+              <mat-label>Enfermedad SI</mat-label>
+              <div style="width: 100%; text-align: center;">
+                <mat-form-field appearance="fill">
+                  <mat-select formControlName="diaseaseYes" name="food">
+                    <mat-option *ngFor="let question of questions" [value]="question.codigo">
+                      {{question.descripcion}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <mat-label>Enfermedad NO</mat-label>
+              <div style="width: 100%; text-align: center;">
+                <mat-form-field appearance="fill">
+                  <mat-select formControlName="diaseaseNot" name="food">
+                    <mat-option *ngFor="let question of questions" [value]="question.codigo">
+                      {{question.descripcion}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </mat-card>
+        </div>
+        <div class="button-row">
+          <button mat-button class="add-symptoms-button" type="submit" style="color: #FFFFFF;">Aceptar</button>
+          <button mat-button mat-dialog-close class="add-symptoms-button" style="color: #FFFFFF;">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </mat-card>
+</div>
+
+

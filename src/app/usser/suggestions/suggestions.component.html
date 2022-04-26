@@ -1,0 +1,37 @@
+<div class="grettings-general">
+  <div class="toogle-bar">
+    <div class="toogle-bar">
+      <mat-card class="example-card">
+        <mat-card-title-group>
+          <mat-card-title style="padding-inline: 3em;">Bienvenido</mat-card-title>
+          <mat-card-subtitle>Luis</mat-card-subtitle>
+          <img mat-card-sm-image style="border-radius: 1em;" src="https://material.angular.io/assets/img/examples/shiba2.jpg" >
+        </mat-card-title-group>
+      </mat-card>
+    </div>
+  </div>
+  <div class="grettings-symptoms">
+    <mat-card style="padding-inline: 4rem; border-radius: 20px; height: 100%; padding-top: 2.5rem;">
+      <h4 style="font-size: 5rem; color:#2B4965;">Sugerencias y Comentarios</h4>
+    </mat-card>
+  </div>
+  <div class="datatable">
+    <!-- <mat-tab-group animationDuration="2000ms" mat-align-tabs="center"> -->
+    <mat-tab-group mat-align-tabs="center">
+      <mat-tab label="Sugerencias">
+        <ng-template matTabContent>
+          <mat-list role="list" *ngFor="let item of responseItem">
+            <mat-list-item role="listitem">{{item.comentario}}</mat-list-item>
+          </mat-list>
+        </ng-template>
+      </mat-tab>
+      <mat-tab label="Comentarios">
+        <ng-template matTabContent>
+          <mat-list role="list" *ngFor="let comment of responseItemComments">
+            <mat-list-item role="listitem">{{comment.comentario}}</mat-list-item>
+          </mat-list>
+        </ng-template>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+<div class="header-popup">
+  <mat-card style="padding-inline: 4rem; border-radius: 20px; height: 100%; padding-top: 2.5rem;">
+    <h4 style="font-size: 3.5rem; color:#2B4965; font-weight: 500;">Modificar Síntoma</h4>
+  </mat-card>
+</div>
+
+<div class="body-popup">
+  <mat-card style="padding-inline: 4rem; border-radius: 20px; height: 100%; padding-top: 2.5rem;">
+    <div class="body.field">
+      <form [formGroup]="symptomForm" (ngSubmit)="Accept()">
+        <div style="width: 100%; text-align: center;">
+          <mat-form-field appearance="standard" style="width: 70%;">
+            <mat-label>Sintoma</mat-label>
+            <input matInput formControlName="symptom" placeholder="Ingresa aqui el Sintoma" #symptom>
+          </mat-form-field>
+        </div>
+        <div style="width: 100%; text-align: center;">
+          <mat-form-field appearance="fill" style="width: 70%;">
+            <mat-label>Descripcion</mat-label>
+            <textarea matInput formControlName="description"></textarea>
+          </mat-form-field>
+        </div>
+        <div class="button-row">
+          <button mat-button class="add-symptoms-button" type="submit" style="color: #FFFFFF;">Aceptar</button>
+          <button mat-button mat-dialog-close class="add-symptoms-button" style="color: #FFFFFF;">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </mat-card>
+</div>

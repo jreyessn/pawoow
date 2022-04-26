@@ -1,0 +1,18 @@
+<div class="page-container">
+  <div class="sidebar">
+    <div class="list-items">
+      <div class="image-logo"><img class="logo-banner" src="../../../assets/img/utils/logo-image-two.png" alt=""></div>
+      <a routerLink="/dashboard/home" routerLinkActive="selected" class="list-item"><img class="icon-banner" src="../../../assets/img/icons/inicio.png" alt="">Inicio</a>
+      <a routerLink="/dashboard/symptoms" routerLinkActive="selected" class="list-item"><img class="icon-banner" src="../../../assets/img/icons/sintomas.png" alt="">Sintomas</a>
+      <a routerLink="/dashboard/questions" routerLinkActive="selected" class="list-item"><img class="icon-banner" src="../../../assets/img/icons/preguntas perro.png" alt="">Preguntas</a>
+      <a routerLink="/dashboard/diseases" routerLinkActive="selected" class="list-item"><img class="icon-banner" src="../../../assets/img/icons/enfermedad.png" alt="">Enfermedad</a>
+      <a routerLink="/dashboard/rules" routerLinkActive="selected" class="list-item"><img class="icon-banner" src="../../../assets/img/icons/reglas.png" alt="">Reglas</a>
+      <a routerLink="/dashboard/veterinary" routerLinkActive="selected" class="list-item"><img class="icon-banner" src="../../../assets/img/icons/veterinaria.png" alt="">Veterinaria</a>
+      <a routerLink="/dashboard/suggestions" routerLinkActive="selected" class="list-item"><img class="icon-banner" src="../../../assets/img/icons/sugerencia.png" alt="">Sugerencias</a>
+      <div class="list-item-last"><img class="icon-banner" src="../../../assets/img/icons/cerrar sesion.png" alt=""><button mat-button (click)="logOut()">Cerrar sesion</button></div>
+    </div>
+  </div>
+  <div class="page-content-container">
+    <router-outlet></router-outlet>
+  </div>
+</div>
