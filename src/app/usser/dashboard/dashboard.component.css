@@ -1,5 +1,6 @@
 .page-container{
-  display: flex;
+  display: grid;
+  grid-template-columns: 300px auto;
   height: 100%;
   /* background: #E0E4E3; */
 }
@@ -78,4 +79,9 @@
   /* padding: 10px 20px; */
   font-family: 'Poppins';
   cursor: pointer;
+}
+
+.toolbar-flex {
+  display: flex;
+  justify-content: space-between;
 }

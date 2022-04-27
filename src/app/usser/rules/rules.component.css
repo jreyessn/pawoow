@@ -43,7 +43,6 @@ html,body {
 
 .toogle-bar{
   display: flex;
-  width: 100em;
   justify-content: end;
 }
 .example-card {

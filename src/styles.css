@@ -46889,9 +46889,9 @@ body.swal2-height-auto {
     }
 }
 
-body {
+/* body {
     background: #f2f3f8;
-}
+} */
 
 @media (min-width: 1025px) {
     .kt-wrapper {
