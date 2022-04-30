@@ -1,0 +1,28 @@
+.datatable-border-right {
+    border-right: 1.5px solid #ccc;
+}
+.datatable-border-left {
+    border-left: 1.5px solid #ccc;
+}
+
+tr.mat-row {
+    height: auto;
+}
+
+table thead, table tbody{
+    display: block;
+}
+
+table tr {
+    display: flex;
+}
+
+table tr th, table tr td {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+table th, table td {
+    padding: 1rem !important;
+}

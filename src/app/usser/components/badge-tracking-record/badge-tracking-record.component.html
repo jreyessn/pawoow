@@ -1,0 +1,3 @@
+<span class="badge badge-primary">
+    {{ createdBy.fechaCre | date:'dd/MM/yyyy' }} {{ createdBy.fechaCre | date:'hh:mm a' }} {{ createdBy?.usuarioMod || createdBy?.usuarioCre }}
+</span>

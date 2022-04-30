@@ -21,48 +21,51 @@
         <table mat-table [dataSource]="dataSource">
           <!-- ID Column -->
           <ng-container matColumnDef="codigo">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align:center;">Codigo</th>
-            <td mat-cell *matCellDef="let row" style="text-align:center;"> {{row.codDiagnostico}} </td>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align:center; width: 10%;">Codigo</th>
+            <td mat-cell *matCellDef="let row" style="text-align:center; width: 10%;"> {{row.codDiagnostico}} </td>
           </ng-container>
 
           <!-- Progress Column -->
           <ng-container matColumnDef="pregunta">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align:center;">Pregunta</th>
-            <td mat-cell *matCellDef="let row" style="text-align:center;"> {{row.descripcion}} </td>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align:center; width: 30%;">Pregunta</th>
+            <td mat-cell *matCellDef="let row" style="text-align:center; width: 30%;"> {{row.descripcion}} </td>
           </ng-container>
 
           <!-- Progress Column -->
           <ng-container matColumnDef="SI">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align:center;">SI</th>
-            <td mat-cell *matCellDef="let row" style="text-align:center;"> {{row.codDiagSi? row.codDiagSi : 'null' }} </td>
+            <th class="datatable-border-left" mat-header-cell *matHeaderCellDef mat-sort-header style="text-align:center; width: 9%;">SI</th>
+            <td class="datatable-border-left text-muted" mat-cell *matCellDef="let row" style="text-align:center; width: 9%;"> {{row.codDiagSi? row.codDiagSi : 'NULL' }} </td>
           </ng-container>
 
           <!-- Progress Column -->
           <ng-container matColumnDef="NO">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align:center;">NO</th>
-            <td mat-cell *matCellDef="let row" style="text-align:center;"> {{row.codDiagNo? row.codDiagNo : 'null' }} </td>
+            <th class="datatable-border-right" mat-header-cell *matHeaderCellDef mat-sort-header style="text-align:center; width: 9%;">NO</th>
+            <td class="datatable-border-right text-muted" mat-cell *matCellDef="let row" style="text-align:center; width: 9%;"> {{row.codDiagNo? row.codDiagNo : 'NULL' }} </td>
           </ng-container>
 
           <!-- Progress Column -->
           <ng-container matColumnDef="Enf. SI">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align:center;">Enf SI</th>
-            <td mat-cell *matCellDef="let row" style="text-align:center;"> {{row.codEnfeSi? row.codEnfeSi : 'null' }} </td>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align:center; width: 9%;">Enf SI</th>
+            <td class="text-muted" mat-cell *matCellDef="let row" style="text-align:center; width: 9%;"> {{row.codEnfeSi? row.codEnfeSi : 'NULL' }} </td>
             <!-- <a href="javascript:;" class="kt-chat__username">${ v.user ? v.user.name : '' }</a> -->
           </ng-container>
 
           <!-- Progress Column -->
           <ng-container matColumnDef="Enf. NO">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align:center;">Enf NO</th>
-            <td mat-cell *matCellDef="let row" style="text-align:center;"> {{row.codEnfeNo? row.codEnfeNo : 'null' }} </td>
+            <th class="datatable-border-right" mat-header-cell *matHeaderCellDef mat-sort-header style="text-align:center; width: 9%;">Enf NO</th>
+            <td class="datatable-border-right text-muted" mat-cell *matCellDef="let row" style="text-align:center; width: 9%;"> {{row.codEnfeNo? row.codEnfeNo : 'NULL' }} </td>
           </ng-container>
 
           <ng-container matColumnDef="opciones">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align:center;">Opciones</th>
-            <td mat-cell *matCellDef="let row" style="text-align:center;">
-              <button mat-icon-button (click)="onEdit(row)"><img class="icon-banner"
-                  src="../../../assets/img/icons/editar.png" alt=""></button>
-              <button mat-icon-button (click)="onDelete(row)"><img class="icon-banner"
-                  src="../../../assets/img/icons/eliminar.png" alt=""></button>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align:center; width: 24%;">Opciones</th>
+            <td class="flex-column" mat-cell *matCellDef="let row" style="text-align:center; width: 24%;">
+              <div>
+                <button mat-icon-button (click)="onEdit(row)"><img class="icon-banner"
+                    src="../../../assets/img/icons/editar.png" alt=""></button>
+                <button mat-icon-button (click)="onDelete(row)"><img class="icon-banner"
+                    src="../../../assets/img/icons/eliminar.png" alt=""></button>
+              </div>
+              <app-badge-tracking-record [createdBy]="row.createdBy"></app-badge-tracking-record>
             </td>
           </ng-container>
 
@@ -71,7 +74,7 @@
 
           <!-- Row shown when there is no matching data. -->
           <tr class="mat-row" *matNoDataRow>
-            <td class="mat-cell" colspan="4">Ingrese Codigo de Sintoma "{{input.value}}"</td>
+            <td [colSpan]="7" class="mat-cell w-100">Ingrese Codigo de Sintoma "{{input.value}}"</td>
           </tr>
         </table>
         <mat-paginator [length]="rules.length"

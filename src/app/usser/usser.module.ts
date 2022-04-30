@@ -40,6 +40,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { ErrorPopupComponent } from './error-popup/error-popup.component';
 import { AddRulesComponent } from './add-rules/add-rules.component';
 import { EditRulesComponent } from './edit-rules/edit-rules.component';
+import { BadgeTrackingRecordComponent } from './components/badge-tracking-record/badge-tracking-record.component';
 
 
 @NgModule({
@@ -64,7 +65,8 @@ import { EditRulesComponent } from './edit-rules/edit-rules.component';
     EditQuestionComponent,
     ErrorPopupComponent,
     AddRulesComponent,
-    EditRulesComponent
+    EditRulesComponent,
+    BadgeTrackingRecordComponent
   ],
   imports: [
     CommonModule,

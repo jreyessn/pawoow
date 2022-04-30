@@ -87,7 +87,14 @@ export class PawwowService {
           headers: reqHeader,
           //.set('pageNumber', pageNumber.toString())
         })
-        .pipe(map((data) => data));
+        .pipe(map((data) => {
+          data.result = data.result.map(item => {
+            item.createdBy = this.mapCreatedBy(item)
+            return item
+          })
+
+          return data
+        }))
     }
 
     // k1k3 : Obtiene las enfermedades
@@ -116,7 +123,14 @@ export class PawwowService {
         .get<any>(`${this.baseUrl}/restapi/api/Enfermedad`, {
           headers: reqHeader,
         })
-        .pipe(map((data) => data));
+        .pipe(map((data) => {
+          data.result = data.result.map(item => {
+            item.createdBy = this.mapCreatedBy(item)
+            return item
+          })
+
+          return data
+        }))
     }
 
     // k1k3 : Crea una Regla
@@ -285,7 +299,14 @@ export class PawwowService {
         .get<any>(`${this.baseUrl}/restapi/api/Diagnostico/%20`, {
           headers: reqHeader,
         })
-        .pipe(map((data) => data));
+        .pipe(map((data) => {
+          data.result = data.result.map(item => {
+            item.createdBy = this.mapCreatedBy(item)
+            return item
+          })
+
+          return data
+        }))
     }
 
     // k1k3 : Crea una pregunta
@@ -319,7 +340,14 @@ export class PawwowService {
         .get<any>(`${this.baseUrl}/restapi/api/Veterinaria`, {
           headers: reqHeader,
         })
-        .pipe(map((data) => data));
+        .pipe(map((data) => {
+          data.result = data.result.map(item => {
+            item.createdBy = this.mapCreatedBy(item)
+            return item
+          })
+
+          return data
+        }))
     }
 
     //k1k3 : Actualiza los datos de la veterinaria
@@ -386,7 +414,14 @@ export class PawwowService {
         .get<any>(`${this.baseUrl}/restapi/api/Regla/${cod}`, {
           headers: reqHeader,
         })
-        .pipe(map((data) => data));
+        .pipe(map((data) => {
+          data.result = data.result.map(item => {
+            item.createdBy = this.mapCreatedBy(item)
+            return item
+          })
+
+          return data
+        }))
     }
 
     //k1k3 : Popup para agregar sintomas
@@ -463,5 +498,21 @@ export class PawwowService {
   public LogOut(){
     this.deleteTokenInLocalStorage();
   }
+
+  // Helpers
+
+  /**
+   * Mapea los datos de auditoria del registro
+   * 
+   * @param element Item
+   */
+   public mapCreatedBy(element){
+    return {
+      fechaCre:   element.fechaCre || '',
+      usuarioMod: element.usuarioMod || '',
+      usuarioCre: element.usuarioCre || ''
+    }
+  }
+
 
 }

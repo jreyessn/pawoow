@@ -34,8 +34,11 @@
           <ng-container matColumnDef="opciones">
             <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align:center;">Opciones</th>
             <td mat-cell *matCellDef="let row" style="text-align:center;">
-              <button mat-icon-button (click)="onEdit(row)"><img class="icon-banner" src="../../../assets/img/icons/editar.png" alt=""></button>
-              <button mat-icon-button (click)="onDelete(row.codigo)"><img class="icon-banner" src="../../../assets/img/icons/eliminar.png" alt=""></button>
+              <div class="d-block">
+                <button mat-icon-button (click)="onEdit(row)"><img class="icon-banner" src="../../../assets/img/icons/editar.png" alt=""></button>
+                <button mat-icon-button (click)="onDelete(row.codigo)"><img class="icon-banner" src="../../../assets/img/icons/eliminar.png" alt=""></button>
+              </div>
+              <app-badge-tracking-record [createdBy]="row.createdBy"></app-badge-tracking-record>
             </td>
           </ng-container>
 
