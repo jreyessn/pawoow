@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { PawwowService } from 'src/app/services/pawwow.service';
-import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
@@ -18,6 +18,7 @@ export class EditQuestionsComponentComponent implements OnInit {
 
 
   constructor(public pawwowService: PawwowService,
+    public dialogRef: MatDialogRef<EditQuestionsComponentComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit(): void {
@@ -33,7 +34,7 @@ export class EditQuestionsComponentComponent implements OnInit {
       //this.OneItem.push(data);
       console.log(data)
      });
-     location.reload();
+     this.dialogRef.close();
   }
 
 }

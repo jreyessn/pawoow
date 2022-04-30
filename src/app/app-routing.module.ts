@@ -8,6 +8,7 @@ import { QuestionsComponent } from './usser/questions/questions.component';
 import { RulesComponent } from './usser/rules/rules.component';
 import { SuggestionsComponent } from './usser/suggestions/suggestions.component';
 import { SymptomsComponent } from './usser/symptoms/symptoms.component';
+import { UsersComponent } from './usser/users/users.component';
 import { VeterinaryComponent } from './usser/veterinary/veterinary.component';
 
 const routes: Routes = [
@@ -45,6 +46,10 @@ const routes: Routes = [
     {
       path : 'suggestions',
       component : SuggestionsComponent
+    },
+    {
+      path : 'users',
+      component : UsersComponent
     }
   ]},
 ];

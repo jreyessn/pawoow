@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { map } from "rxjs/operators";
-import { Observable } from 'rxjs';
+import { map, mergeMap } from "rxjs/operators";
+import { forkJoin, merge, Observable } from 'rxjs';
 import { SymptomsResponse } from '../Models/Symptoms';
 import { AddSymptomsComponent } from '../usser/add-symptoms/add-symptoms.component';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
@@ -10,6 +10,8 @@ import { AddQuestionComponent } from '../usser/add-question/add-question.compone
 import { AddDiseasesComponent } from '../usser/add-diseases/add-diseases.component';
 import { AddRulesComponent } from '../usser/add-rules/add-rules.component';
 import { CreatedBy } from '../Models/Data';
+import { User, UserResponse } from '../Models/User';
+import { Rol, RolResponse } from '../Models/Rol';
 
 @Injectable({
   providedIn: 'root'
@@ -166,6 +168,24 @@ export class PawwowService {
       .pipe(map((data) => data));
     }
 
+    // k1k3 : Crea un usuario
+    public createUser(data: User) {
+      var apiName = `${this.baseUrl}/restapi/api/Usuario`;
+      var token   = localStorage.getItem("user_token");
+      var headers = new HttpHeaders({
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      });
+
+      if(data.idUsuario > 0){
+        return this.httpClient.put<any>(apiName, data, { headers })
+                   .pipe(map((data) => data));
+      }
+
+      return this.httpClient.post<any>(apiName, data, { headers })
+                 .pipe(map((data) => data));
+    }
+
     // k1k3 : Edita un Sintoma
     public editSymptom(code, symptom, description) {
       var apiName = `${this.baseUrl}/restapi/api/Sintoma`;
@@ -185,6 +205,21 @@ export class PawwowService {
     // k1k3 : Elimina un Sintoma
     public deleteSymptom(code) {
       var apiName = `${this.baseUrl}/restapi/api/Sintoma/${code}`;
+      var token = localStorage.getItem("user_token");
+      var reqHeader = new HttpHeaders({
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      });
+      return this.httpClient
+      .delete<any>(
+        apiName,
+        {headers: reqHeader})
+      .pipe(map((data) => data));
+    }
+
+    // k1k3 : Elimina un usuario
+    public deleteUser(code) {
+      var apiName = `${this.baseUrl}/restapi/api/Usuario/${code}`;
       var token = localStorage.getItem("user_token");
       var reqHeader = new HttpHeaders({
         "Content-Type": "application/json",
@@ -422,6 +457,45 @@ export class PawwowService {
         }))
     }
 
+    // Obtiene los roles
+    public getRoles(): Observable<Rol[]> {
+      var token = localStorage.getItem("user_token");
+      var headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`,
+      });
+
+      return this.httpClient.get<RolResponse>(`${this.baseUrl}/restapi/api/Rol`, { headers }).pipe(
+        map((res) => res.result)
+      )
+    }
+
+    // k1k3 : Obtiene los usuarios
+    public getUsers(): Observable<UserResponse> {
+      var token = localStorage.getItem("user_token");
+      var headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`,
+      });
+
+      return forkJoin([
+        this.httpClient.get<UserResponse>(`${this.baseUrl}/restapi/api/Usuario`, { headers }),
+        this.getRoles()
+      ])
+      .pipe(
+        map(([usersResponse, roles]) => {
+          
+          usersResponse.result = usersResponse.result.map(item => {
+            console.log(roles, item.idRol)
+            item.createdBy = this.mapCreatedBy(item)
+            item.rol       = roles.find(rolItem => rolItem.idRol == item.idRol)
+
+            return item
+          })
+
+          return usersResponse
+        })
+      )
+    }
+
     //k1k3 : Popup para agregar sintomas
     public addRulesPopup(message: string) {
       let rulesPopup: MatDialogRef<AddRulesComponent>;
@@ -481,7 +555,7 @@ export class PawwowService {
     symptomPopup = this.dialog.open(AddQuestionComponent);
     symptomPopup.componentInstance.message = message;
     //this.dialogRef.close()
-    return symptomPopup.afterClosed();
+    return symptomPopup;
   }
 
   //k1k3 : Popup para agregar sintomas

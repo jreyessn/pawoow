@@ -1,0 +1,74 @@
+<div class="header-popup">
+    <mat-card style="padding-inline: 4rem; border-radius: 20px; height: 100%; padding-top: 2.5rem;">
+      <h4 style="font-size: 3.5rem; color:#2B4965; font-weight: 500;">{{ title }}</h4>
+    </mat-card>
+  </div>
+  
+  <div class="body-popup">
+    <mat-card style="padding-inline: 4rem; border-radius: 20px; height: 100%; padding-top: 2.5rem;">
+      <div class="body.field">
+        <form [formGroup]="formUser" (ngSubmit)="Accept()" autocomplete="off">
+
+            <mat-form-field appearance="standard">
+              <mat-label>Nombre *</mat-label>
+              <input matInput formControlName="nombre" placeholder="Nombre">
+              <mat-error>
+                  Este campo es obligatorio
+              </mat-error>
+            </mat-form-field>
+         
+            <mat-form-field appearance="standard">
+              <mat-label>Apellido *</mat-label>
+              <input matInput formControlName="apellido" placeholder="Apellido">
+            </mat-form-field>
+         
+            <mat-form-field appearance="standard">
+              <mat-label>Usuario *</mat-label>
+              <input matInput formControlName="usuario" placeholder="Usuario">
+              <mat-error>
+                  Este campo es obligatorio
+              </mat-error>
+            </mat-form-field>
+         
+            <mat-form-field appearance="standard">
+              <mat-label>Contraseña *</mat-label>
+              <input type="password" autocomplete="new-password" matInput formControlName="clave" placeholder="******">
+              <mat-error>
+                Este campo es obligatorio
+            </mat-error>
+            </mat-form-field>
+         
+            <mat-form-field appearance="standard">
+              <mat-label>Confirmar Contraseña *</mat-label>
+              <input type="password" autocomplete="off" matInput formControlName="confirmar_clave" placeholder="******">
+              <mat-error controlName="confirmar_clave">
+                  <span class="d-block" *ngIf="formUser.get('confirmar_clave')?.errors?.passwordMatch">
+                      Las contraseñas no coinciden
+                  </span>
+                  
+                  <span class="d-block" *ngIf="formUser.get('confirmar_clave')?.errors?.required">
+                      Este campo es obligatorio
+                  </span>
+
+              </mat-error>
+            </mat-form-field>
+         
+            <mat-form-field appearance="fill">
+              <mat-label>Rol</mat-label>
+              <select formControlName="idRol" matNativeControl>
+                <option *ngFor="let rol of roles$ | async" [value]="rol.idRol">
+                    {{ rol.nombre | uppercase }}
+                </option>
+              </select>
+            </mat-form-field>
+        
+          <div class="button-row">
+            <button mat-button class="add-diseases-button" type="submit" style="color: #FFFFFF;">Aceptar</button>
+            <button mat-button mat-dialog-close class="add-diseases-button" style="color: #FFFFFF;">Cancelar</button>
+          </div>
+        </form>
+      </div>
+    </mat-card>
+  </div>
+  
+  

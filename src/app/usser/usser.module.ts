@@ -41,6 +41,8 @@ import { ErrorPopupComponent } from './error-popup/error-popup.component';
 import { AddRulesComponent } from './add-rules/add-rules.component';
 import { EditRulesComponent } from './edit-rules/edit-rules.component';
 import { BadgeTrackingRecordComponent } from './components/badge-tracking-record/badge-tracking-record.component';
+import { UsersComponent } from './users/users.component';
+import { AddUsersComponent } from './add-users/add-users.component';
 
 
 @NgModule({
@@ -66,7 +68,9 @@ import { BadgeTrackingRecordComponent } from './components/badge-tracking-record
     ErrorPopupComponent,
     AddRulesComponent,
     EditRulesComponent,
-    BadgeTrackingRecordComponent
+    BadgeTrackingRecordComponent,
+    UsersComponent,
+    AddUsersComponent
   ],
   imports: [
     CommonModule,

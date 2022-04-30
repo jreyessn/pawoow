@@ -32,6 +32,10 @@
   display: flex;
 }
 
+.features-two {
+  padding-top: 0rem;
+}
+
 .features-three{
   width: 100%;
   padding-left: 1rem;

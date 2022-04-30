@@ -28,7 +28,8 @@ export class QuestionsComponent implements AfterViewInit,OnInit {
   sort: MatSort = new MatSort;
 
   questionsResponse    : any;
-  questions            : Questions [] = [];
+  questions            : Questions[] = [];
+  allQuestions         : MatTableDataSource<Questions> = new MatTableDataSource();
 
   public pageSize = 10;
   public currentPage = 0;
@@ -47,10 +48,10 @@ export class QuestionsComponent implements AfterViewInit,OnInit {
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
+    this.allQuestions.filter = filterValue.trim().toLowerCase();
+    this.questions           = this.allQuestions.filteredData
+    this.currentPage         = 0
+    this.iterator()
   }
 
   ngOnInit(): void {
@@ -61,6 +62,7 @@ export class QuestionsComponent implements AfterViewInit,OnInit {
     this.pawwowService.getQuestions().subscribe((data : any)=>{
       if(data.statusCode === 1000){
         this.questionsResponse = data;
+        this.questions = []
         this.getItemQuestions();
       }else{
         console.log('Inautorizado');
@@ -79,7 +81,8 @@ export class QuestionsComponent implements AfterViewInit,OnInit {
     questions.forEach(element => {
      this.questions.push(element);
     });
-    console.log(this.questions);
+    
+    this.allQuestions = new MatTableDataSource(questions)
     //this.dataSource = new MatTableDataSource(this.questions);
     this.iterator();
   }
@@ -88,14 +91,20 @@ export class QuestionsComponent implements AfterViewInit,OnInit {
     console.log('addQuestions');
     //this.dialog.open(AddQuestionComponent);
     let message = "Agregar Pregunta";
-    this.pawwowService.addQuestionsPopup(message);
+    const modalRef = this.pawwowService.addQuestionsPopup(message);
+  
+    modalRef.beforeClosed().subscribe(() => {
+      this.getAllItemQuestions()
+    })
   }
 
   public onEdit(row: any){
-    console.log('onEdit'+row.codigo);
-    console.log('onEdit'+row.nombre);
-    console.log('onEdit'+row.descripcion);
-    this.dialog.open(EditQuestionsComponentComponent, { data:{datakey: row}});
+
+    const modalRef = this.dialog.open(EditQuestionsComponentComponent, { data:{datakey: row}});
+
+    modalRef.beforeClosed().subscribe(() => {
+      this.getAllItemQuestions()
+    })
   }
   public onDelete(row: any){
     console.log(row);

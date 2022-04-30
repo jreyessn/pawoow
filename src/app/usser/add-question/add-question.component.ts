@@ -25,7 +25,7 @@ export class AddQuestionComponent implements OnInit {
   symptomsResponse    : any;
   symptoms            : Symptoms [] = [];
   codesSymptoms       : string = "";
-  final               : string = "";
+  final               : any[] = [];
 
   constructor(public pawwowService: PawwowService,
               public dialogRef: MatDialogRef<AddQuestionComponent>,
@@ -65,25 +65,14 @@ export class AddQuestionComponent implements OnInit {
   }
 
   getCodeOfSymptoms(value: any){
-    console.log(value);
-    var tmp = "";
-    for(let val of value){
-      tmp = "{ codigo: "+val.codigo+"},";
-      if(tmp == ""){
-        this.final = tmp;
-      }else{
-        this.final = tmp.concat(this.final.toString());
-      }
-    }
-    this.final = this.final.substring(0, this.final.length - 1);
-    console.log("Resultado final:" + this.final);
+    return value.map(item => ({ codigo: item.codigo }))
   }
 
 
   Accept(){
     //var code = this.questionForm.value.code;
     var symptoms = this.symptomsList.value;
-    this.getCodeOfSymptoms(symptoms);
+    this.final   = this.getCodeOfSymptoms(symptoms);
     //this.codesSymptoms = "sintomas: ["+this.final+"]";
     var desc = this.questionForm.value.question;
     console.log(desc);
