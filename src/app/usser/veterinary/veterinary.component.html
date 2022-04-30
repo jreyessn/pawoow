@@ -1,61 +1,67 @@
 <div class="grettings-general">
   <div class="grettings-symptoms">
-    <mat-card style="padding-inline: 4rem; border-radius: 20px; height: 100%; padding-top: 2.5rem;">
-      <h4 style="font-size: 5rem; color:#2B4965;">Veterinaria</h4>
-    </mat-card>
-  </div>
-  <div class="datatable">
-    <div class="datatable-header">
-      <!-- <mat-form-field appearance="legacy">
-        <mat-label>Sintoma</mat-label>
-        <input matInput placeholder="Placeholder">
-        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-        <mat-hint>Buscar</mat-hint>
-      </mat-form-field> -->
+    <mat-card class="card-page-title d-flex justify-content-between align-items-center">
+      <h4 class="font-weight-bold color-dark size-3 mb-0">Veterinaria</h4>
       <div class="example-button-row">
         <button mat-button class="add-symptoms-button" (click)="editVeterinary()" style="color: #FFFFFF;">Editar</button>
       </div>
-    </div>
-    <form [formGroup]="veterinaryForm">
+    </mat-card>
+  </div>
+  <div class="datatable">
+    <form class="pt-4" [formGroup]="veterinaryForm">
       <div style="width: 100%; text-align: center;">
-        <mat-form-field appearance="standard" style="width: 70%;">
-          <mat-label>Nombre</mat-label>
+        <mat-form-field appearance="standard" style="width: 80%;">
+          <div class="mr-3" matPrefix>
+            <label class="font-weight-bold text-muted h5">Nombre</label>
+          </div>
           <input matInput formControlName="name" placeholder="Ingresa aqui el codigo" #code>
         </mat-form-field>
       </div>
       <div style="width: 100%; text-align: center;">
-        <mat-form-field appearance="standard" style="width: 70%;">
-          <mat-label>Direccion</mat-label>
+        <mat-form-field appearance="standard" style="width: 80%;">
+          <div class="mr-3" matPrefix>
+            <label class="font-weight-bold text-muted h5">Direccion</label>
+          </div>
           <input matInput formControlName="address" placeholder="Ingresa aqui el codigo" #code>
         </mat-form-field>
       </div>
       <div style="width: 100%; text-align: center;">
-        <mat-form-field appearance="standard" style="width: 70%;">
-          <mat-label>Horario</mat-label>
+        <mat-form-field appearance="standard" style="width: 80%;">
+          <div class="mr-3" matPrefix>
+            <label class="font-weight-bold text-muted h5">Horario</label>
+          </div>
           <input matInput formControlName="schedule" placeholder="Ingresa aqui el codigo" #code>
         </mat-form-field>
       </div>
       <div style="width: 100%; text-align: center;">
-        <mat-form-field appearance="standard" style="width: 70%;">
-          <mat-label>URL Mapa</mat-label>
+        <mat-form-field appearance="standard" style="width: 80%;">
+          <div class="mr-3" matPrefix>
+            <label class="font-weight-bold text-muted h5">URL Mapa</label>
+          </div>
           <input matInput formControlName="urlmap" placeholder="Ingresa aqui el codigo" #code>
         </mat-form-field>
       </div>
       <div style="width: 100%; text-align: center;">
-        <mat-form-field appearance="standard" style="width: 70%;">
-          <mat-label>URL Instagram</mat-label>
+        <mat-form-field appearance="standard" style="width: 80%;">
+          <div class="mr-3" matPrefix>
+            <label class="font-weight-bold text-muted h5">URL Instagram</label>
+          </div>
           <input matInput formControlName="urlinstagram" placeholder="Ingresa aqui el codigo" #code>
         </mat-form-field>
       </div>
       <div style="width: 100%; text-align: center;">
-        <mat-form-field appearance="standard" style="width: 70%;">
-          <mat-label>URL Facebook</mat-label>
+        <mat-form-field appearance="standard" style="width: 80%;">
+          <div class="mr-3" matPrefix>
+            <label class="font-weight-bold text-muted h5">URL Facebook</label>
+          </div>
           <input matInput formControlName="urlfacebook" placeholder="Ingresa aqui el codigo" #code>
         </mat-form-field>
       </div>
       <div style="width: 100%; text-align: center;">
-        <mat-form-field appearance="standard" style="width: 70%;">
-          <mat-label>ID pagina Facebook</mat-label>
+        <mat-form-field appearance="standard" style="width: 80%;">
+          <div class="mr-3" matPrefix>
+            <label class="font-weight-bold text-muted h5">ID pagina Facebook</label>
+          </div>
           <input matInput formControlName="idfacebook" placeholder="Ingresa aqui el Sintoma" #symptom>
         </mat-form-field>
       </div>

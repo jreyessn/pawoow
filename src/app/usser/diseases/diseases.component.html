@@ -1,28 +1,22 @@
 <div class="grettings-general">
 
   <div class="grettings-symptoms">
-    <mat-card style="padding-inline: 4rem; border-radius: 20px; height: 100%; padding-top: 2.5rem;">
-      <h4 style="font-size: 5rem; color:#2B4965;">Enfermedad</h4>
+    <mat-card class="card-page-title">
+      <h4 class="font-weight-bold color-dark size-3">Enfermedad</h4>
     </mat-card>
   </div>
   <div class="datatable">
-    <div class="datatable-header">
-      <!-- <mat-form-field appearance="legacy">
-        <mat-label>Sintoma</mat-label>
-        <input matInput placeholder="Placeholder">
-        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-        <mat-hint>Buscar</mat-hint>
-      </mat-form-field> -->
-      <div class="example-button-row">
-        <button mat-button class="add-symptoms-button" (click)="addDiseases()" style="color: #FFFFFF;">Agregar Enfermedad</button>
-      </div>
-    </div>
 
     <div class="datatable-content">
-      <mat-form-field appearance="standard" style="max-width: 20%;">
-        <mat-label>Buscar</mat-label>
-        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
-      </mat-form-field>
+      <div class="d-flex justify-content-between">
+        <mat-form-field appearance="standard" style="max-width: 35%;">
+          <mat-label>Buscar</mat-label>
+          <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+        </mat-form-field>
+        <div class="d-flex align-items-center">
+          <button mat-button class="add-symptoms-button" (click)="addDiseases()" style="color: #FFFFFF;">Agregar Enfermedad</button>
+        </div>
+      </div>
 
       <div class="mat-elevation-z8">
         <table mat-table [dataSource]="dataSource" matSort>

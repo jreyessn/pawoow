@@ -15,6 +15,9 @@ import { DOCUMENT } from '@angular/common';
 export class LoginComponent implements OnInit, OnDestroy {
   isLogginError : boolean = false;
   title = 'PawoowProject';
+
+  isPasswordVisible: boolean = false
+
   constructor(
     public pawwowService: PawwowService, 
     private router : Router,

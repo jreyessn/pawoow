@@ -19,7 +19,7 @@
 .grettings-footer{
   display: flex;
   padding-top: 2rem;
-  gap: 1rem;
+  gap: 1.3rem;
   justify-content: space-between;
   align-content: space-between;
 }
