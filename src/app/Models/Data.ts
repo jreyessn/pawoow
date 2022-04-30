@@ -10,3 +10,10 @@ export interface Data {
   enfermedades: number;
   preguntas:    number;
 }
+
+export interface CreatedBy {
+  usuarioCre:  string;
+  usuarioMod:  null;
+  fechaCre:    Date;
+  fechaMod:    null;
+}

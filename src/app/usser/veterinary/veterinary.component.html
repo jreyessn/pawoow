@@ -7,12 +7,15 @@
       </div>
     </mat-card>
   </div>
-  <div class="datatable">
+  <div class="datatable" *ngIf="veterinary">
     <form class="pt-4" [formGroup]="veterinaryForm">
       <div style="width: 100%; text-align: center;">
         <mat-form-field appearance="standard" style="width: 80%;">
           <div class="mr-3" matPrefix>
             <label class="font-weight-bold text-muted h5">Nombre</label>
+          </div>
+          <div matSuffix>
+            <!-- <app-badge-tracking-record [createdBy]="veterinary.createdBy"></app-badge-tracking-record> -->
           </div>
           <input matInput formControlName="name" placeholder="Ingresa aqui el codigo" #code>
         </mat-form-field>

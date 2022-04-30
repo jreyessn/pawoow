@@ -1,3 +1,5 @@
+import { CreatedBy } from "./Data";
+
 export interface SymptomsResponse {
   result:      any[];
   statusCode:  number;
@@ -14,5 +16,6 @@ export interface Symptoms {
   usuarioMod:  null;
   fechaCre:    Date;
   fechaMod:    null;
+  createdBy:   CreatedBy;
 }
 

@@ -1,7 +1,7 @@
 <div class="grettings-general">
   <div>
     <mat-card class="card-page-title">
-      <h4 class="font-weight-bold color-dark size-3">Sintomas</h4>
+      <h4 class="font-weight-bold color-dark size-3">Síntomas</h4>
     </mat-card>
   </div>
   <div class="datatable">
@@ -33,7 +33,7 @@
 
           <ng-container matColumnDef="opciones">
             <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align:center;">Opciones</th>
-            <td mat-cell *matCellDef="let row" style="text-align:center;">
+            <td class="py-2" mat-cell *matCellDef="let row" style="text-align:center;">
               <div class="d-block">
                 <button mat-icon-button (click)="onEdit(row)"><img class="icon-banner" src="../../../assets/img/icons/editar.png" alt=""></button>
                 <button mat-icon-button (click)="onDelete(row.codigo)"><img class="icon-banner" src="../../../assets/img/icons/eliminar.png" alt=""></button>

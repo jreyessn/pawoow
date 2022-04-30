@@ -1,3 +1,5 @@
+import { CreatedBy } from "./Data";
+
 export interface RulesResponse {
   result:      any[];
   statusCode:  number;
@@ -19,4 +21,6 @@ export interface Rule {
   usuarioMod:     null;
   fechaCre:       Date;
   fechaMod:       null;
+  createdBy:      CreatedBy;
+
 }

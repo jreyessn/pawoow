@@ -1,5 +1,7 @@
 //Falta el modelo PREGUNTAS
 
+import { CreatedBy } from "./Data";
+
 export interface QuestionsResponse {
   result:      any[];
   statusCode:  number;
@@ -17,4 +19,5 @@ export interface Questions {
   usuarioMod:  null;
   fechaCre:    Date;
   fechaMod:    null;
+  createdBy:   CreatedBy;
 }

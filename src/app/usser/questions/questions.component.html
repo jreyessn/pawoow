@@ -34,7 +34,7 @@
 
           <ng-container matColumnDef="opciones">
             <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align:center;">Opciones</th>
-            <td mat-cell *matCellDef="let row" style="text-align:center;">
+            <td class="py-2" mat-cell *matCellDef="let row" style="text-align:center;">
               <div class="d-block">
                 <button mat-icon-button (click)="onEdit(row)"><img class="icon-banner" src="../../../assets/img/icons/editar.png" alt=""></button>
                 <button mat-icon-button (click)="onDelete(row)"><img class="icon-banner" src="../../../assets/img/icons/eliminar.png" alt=""></button>

@@ -9,6 +9,7 @@ import { ErrorPopupComponent } from '../usser/error-popup/error-popup.component'
 import { AddQuestionComponent } from '../usser/add-question/add-question.component';
 import { AddDiseasesComponent } from '../usser/add-diseases/add-diseases.component';
 import { AddRulesComponent } from '../usser/add-rules/add-rules.component';
+import { CreatedBy } from '../Models/Data';
 
 @Injectable({
   providedIn: 'root'
@@ -341,10 +342,7 @@ export class PawwowService {
           headers: reqHeader,
         })
         .pipe(map((data) => {
-          data.result = data.result.map(item => {
-            item.createdBy = this.mapCreatedBy(item)
-            return item
-          })
+          // data.result = this.mapCreatedBy(data.result)
 
           return data
         }))
@@ -506,8 +504,9 @@ export class PawwowService {
    * 
    * @param element Item
    */
-   public mapCreatedBy(element){
+   public mapCreatedBy(element): CreatedBy {
     return {
+      fechaMod:   element.fechaMod || '',
       fechaCre:   element.fechaCre || '',
       usuarioMod: element.usuarioMod || '',
       usuarioCre: element.usuarioCre || ''

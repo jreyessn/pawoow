@@ -24,7 +24,7 @@ export class VeterinaryComponent implements OnInit {
   });
 
   veterinaryResponse  : any;
-  veterinary          : Veterinary | undefined;
+  veterinary!         : Veterinary;
   name                :any;
 
   constructor(public pawwowService: PawwowService,
