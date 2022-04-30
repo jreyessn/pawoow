@@ -9,19 +9,38 @@
       <a routerLink="/dashboard/rules" routerLinkActive="selected" class="list-item"><img class="icon-banner" src="../../../assets/img/icons/reglas.png" alt="">Reglas</a>
       <a routerLink="/dashboard/veterinary" routerLinkActive="selected" class="list-item"><img class="icon-banner" src="../../../assets/img/icons/veterinaria.png" alt="">Veterinaria</a>
       <a routerLink="/dashboard/suggestions" routerLinkActive="selected" class="list-item"><img class="icon-banner" src="../../../assets/img/icons/sugerencia.png" alt="">Sugerencias</a>
-      <div class="list-item-last"><img class="icon-banner" src="../../../assets/img/icons/cerrar sesion.png" alt=""><button mat-button (click)="logOut()">Cerrar sesion</button></div>
+      <a href="javascript:void(0)" class="list-item mt-4">
+        <img class="icon-banner" (click)="logOut()" src="../../../assets/img/icons/cerrar sesion.png" alt="">Cerrar sesion
+      </a>
+   
     </div>
   </div>
   <div class="page-content-container">
     <div class="toolbar-flex">
-      <div></div>
+      <div class="welcome-toolbar">
+        ¡Bienvenido! <b class="ml-1">{{ name }}</b>
+      </div>
       <div class="toogle-bar">
-        <mat-card class="example-card">
-          <img mat-card-sm-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" >
-          <span class="text-muted">Logout</span>
+        <mat-card class="d-flex">
+          <div class="d-flex align-items-center img-logo-container">
+            <div style="width: 65px;">
+              <img class="rounded img-fluid" src="https://material.angular.io/assets/img/examples/shiba2.jpg" >
+            </div>
+            <a href="javascript:void(0)" class="text-muted">Logout</a>
+          </div>
+          <div class="d-flex align-items-center" style="gap: 1rem">
+              <a class="text-dark" href="javascript:void(0)">
+                <i class="far fa-bell size-12"></i>
+              </a>
+              <a class="text-dark" href="javascript:void(0)">
+                <i class="fa fa-ellipsis-h size-12"></i>
+              </a>
+          </div>
         </mat-card>
       </div>
     </div>
-    <router-outlet></router-outlet>
+    <div class="container-page mt-4">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </div>

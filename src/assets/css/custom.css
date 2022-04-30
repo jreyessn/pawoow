@@ -1,0 +1,30 @@
+.container-page {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.color-dark {
+   color:#2B4965
+}
+
+.size-3 {
+    font-size: 3rem !important;
+}
+
+.card-page-title {
+    padding: 2.5rem !important; 
+    border-radius: 20px !important;
+}
+
+.datatable-header{
+    padding: 2rem;
+    padding-bottom: 1rem !important;
+    display: flex;
+    justify-content: end;
+}
+  
+.datatable-content{
+    width: 100%;
+    padding: 3rem;
+    padding-top: 1rem !important;
+}

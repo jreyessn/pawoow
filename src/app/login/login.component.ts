@@ -1,21 +1,33 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { PawwowService } from '../services/pawwow.service';
+import { DOCUMENT } from '@angular/common';
 
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
-export class LoginComponent implements OnInit{
+export class LoginComponent implements OnInit, OnDestroy {
   isLogginError : boolean = false;
   title = 'PawoowProject';
-  constructor(public pawwowService: PawwowService, private router : Router) { }
+  constructor(
+    public pawwowService: PawwowService, 
+    private router : Router,
+    @Inject(DOCUMENT) private _document  
+  ) { }
 
-  ngOnInit() {  }
+  ngOnInit() { 
+    this._document.body.classList.add("bg-white")
+  }
+  
+  ngOnDestroy(){
+    this._document.body.classList.remove("bg-white")
+  }
 
   OnSubmit(email,password){
     console.log('into sign in');

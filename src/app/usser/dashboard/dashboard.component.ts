@@ -9,12 +9,13 @@ import { PawwowService } from 'src/app/services/pawwow.service';
 })
 export class DashboardComponent implements OnInit {
 
-
+  name!: string;
 
   constructor(public pawwowService: PawwowService,
               private router : Router) { }
 
   ngOnInit(): void {
+    this.name = this.pawwowService.getNameInInLocalStorage();
   }
 
   public logOut(){

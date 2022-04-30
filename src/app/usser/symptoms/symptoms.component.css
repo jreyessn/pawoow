@@ -20,18 +20,6 @@ html,body {
   margin-right: 10px;
 }
 
-.datatable-content{
-  width: 100%;
-  padding-inline: 10%;
-  justify-content: center;
-}
-
-.datatable-header{
-  padding-inline: 40px;
-  display: flex;
-  padding: 20px;
-  justify-content: end;
-}
 
 .add-symptoms-button{
   background: #61C8AD;

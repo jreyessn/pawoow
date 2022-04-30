@@ -6,7 +6,7 @@
 }
 
 .page-content-container{
-  padding: 50px;
+  padding: 3rem 3rem;
 }
 
 .sidebar{
@@ -83,5 +83,21 @@
 
 .toolbar-flex {
   display: flex;
-  justify-content: space-between;
+  justify-content: end;
+  gap: 1rem;
+}
+
+.welcome-toolbar {
+  color: #39465a;
+  display: flex;
+  align-items: center;
+}
+
+.img-logo-container{
+  width: 13rem;
+  gap: 1rem;
+}
+
+.size-12 {
+  font-size: 1.5rem;
 }

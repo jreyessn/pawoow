@@ -58,8 +58,8 @@ export class PawwowService {
       localStorage.setItem("user_apellido", apellido);
     }
 
-    public getNameInInLocalStorage(){
-      var name = localStorage.getItem("user_name");
+    public getNameInInLocalStorage(): string {
+      var name = localStorage.getItem("user_name") ?? "";
       var apellido = localStorage.getItem("user_apellido");
       return name;
     }
