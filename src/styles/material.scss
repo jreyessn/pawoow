@@ -1,0 +1,19 @@
+@font-face {
+  font-family: Poppins;
+  src: url("../assets/webfonts/Poppins-Light.otf") format("opentype");
+}
+
+@import '~@angular/material/theming';
+
+$custom-typography: mat-typography-config(
+  $font-family: "Poppins"
+);
+
+// Override typography CSS classes (e.g., mat-h1, mat-display-1, mat-typography, etc.).
+@include mat-base-typography($custom-typography);
+
+// Override typography for a specific Angular Material components.
+@include mat-checkbox-typography($custom-typography);
+
+// Override typography for all Angular Material, including mat-base-typography and all components.
+@include angular-material-typography($custom-typography);
