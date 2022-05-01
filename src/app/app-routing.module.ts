@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
+import { CheckPermissionGuard } from './shared/permissions-handler/permissions.guard';
 import { DashboardComponent } from './usser/dashboard/dashboard.component';
 import { DiseasesComponent } from './usser/diseases/diseases.component';
 import { HomeComponent } from './usser/home/home.component';
@@ -15,43 +16,67 @@ const routes: Routes = [
   {
     path : '',
     component : LoginComponent
-  },{
+  },
+  {
     path : 'dashboard',
     component : DashboardComponent,
+    canActivateChild: [CheckPermissionGuard],
     children: [
-    {
-      path : 'home',
-      component : HomeComponent
-    },
-    {
-      path : 'symptoms',
-      component : SymptomsComponent
-    },
-    {
-      path : 'questions',
-      component : QuestionsComponent
-    },
-    {
-      path : 'diseases',
-      component : DiseasesComponent
-    },
-    {
-      path : 'rules',
-      component : RulesComponent
-    },
-    {
-      path : 'veterinary',
-      component : VeterinaryComponent
-    },
-    {
-      path : 'suggestions',
-      component : SuggestionsComponent
-    },
-    {
-      path : 'users',
-      component : UsersComponent
-    }
-  ]},
+      {
+        path : 'home',
+        component : HomeComponent,
+      },
+      {
+        path : 'symptoms',
+        component : SymptomsComponent,
+        data: {
+          codModulo: "M05",
+        }
+      },
+      {
+        path : 'questions',
+        component : QuestionsComponent,
+        data: {
+          codModulo: "M08",
+        }
+      },
+      {
+        path : 'diseases',
+        component : DiseasesComponent,
+        data: {
+          codModulo: "M06",
+        }
+      },
+      {
+        path : 'rules',
+        component : RulesComponent,
+        data: {
+          codModulo: "M09",
+        }
+      },
+      {
+        path : 'veterinary',
+        component : VeterinaryComponent,
+        data: {
+          codModulo: "M11",
+        }
+      },
+      {
+        path : 'suggestions',
+        component : SuggestionsComponent,
+        data: {
+          codModulo: "M10",
+        }
+      },
+      {
+        path : 'users',
+        component : UsersComponent,
+        data: {
+          codModulo: "M03",
+        }
+      }
+    ]
+  },
 ];
 
 @NgModule({

@@ -27,6 +27,17 @@ export class PawwowService {
     "Content-Type": "application/json",
   });
 
+    get user_data() {
+      var name        = localStorage.getItem("user_name") ?? "";
+      var apellido    = localStorage.getItem("user_apellido");
+      var verificador = localStorage.getItem("user_verificador") == "1"? true : false;
+
+      return {
+        name, 
+        apellido,
+        verificador
+      }
+    }
 
     // k1k3 : Obtiene los sintomas
     public getDataDashboard(): Observable<any> {
@@ -56,9 +67,10 @@ export class PawwowService {
       }).pipe(map((data) => data));
     }
 
-    public setNameInInLocalStorage(name: any, apellido: any){
+    public setNameInInLocalStorage(name: any, apellido: any, verificador: boolean){
       localStorage.setItem("user_name", name);
       localStorage.setItem("user_apellido", apellido);
+      localStorage.setItem("user_verificador", String(verificador? 1 : 0));
     }
 
     public getNameInInLocalStorage(): string {

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { PawwowService } from 'src/app/services/pawwow.service';
+import { PawwowService } from '../../services/pawwow.service';
 
 
 @Component({

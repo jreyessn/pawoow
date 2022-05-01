@@ -43,6 +43,7 @@ import { EditRulesComponent } from './edit-rules/edit-rules.component';
 import { BadgeTrackingRecordComponent } from './components/badge-tracking-record/badge-tracking-record.component';
 import { UsersComponent } from './users/users.component';
 import { AddUsersComponent } from './add-users/add-users.component';
+import { PermissionsHandlerModule } from '../shared/permissions-handler/permissions-handler.module';
 
 
 @NgModule({
@@ -92,7 +93,7 @@ import { AddUsersComponent } from './add-users/add-users.component';
     MatTabsModule,
     MatListModule,
     MatProgressSpinnerModule,
+    PermissionsHandlerModule
   ],
-  entryComponents: [AddSymptomsComponent,EditSymptomsComponent,AddDiseasesComponent,EditDiseasesComponent,AddRecomendationComponent]
 })
 export class UsserModule { }

@@ -3,13 +3,13 @@
     <div class="list-items">
       <div class="image-logo"><img class="logo-banner" src="../../../assets/img/utils/logo-image-two.png" alt=""></div>
       <a routerLink="/dashboard/home" routerLinkActive="selected" class="list-item"><img class="icon-banner" src="../../../assets/img/icons/inicio.png" alt="">Inicio</a>
-      <a routerLink="/dashboard/symptoms" routerLinkActive="selected" class="list-item"><img class="icon-banner" src="../../../assets/img/icons/sintomas.png" alt="">Sintomas</a>
-      <a routerLink="/dashboard/questions" routerLinkActive="selected" class="list-item"><img class="icon-banner" src="../../../assets/img/icons/preguntas perro.png" alt="">Preguntas</a>
-      <a routerLink="/dashboard/diseases" routerLinkActive="selected" class="list-item"><img class="icon-banner" src="../../../assets/img/icons/enfermedad.png" alt="">Enfermedad</a>
-      <a routerLink="/dashboard/rules" routerLinkActive="selected" class="list-item"><img class="icon-banner" src="../../../assets/img/icons/reglas.png" alt="">Reglas</a>
-      <a routerLink="/dashboard/veterinary" routerLinkActive="selected" class="list-item"><img class="icon-banner" src="../../../assets/img/icons/veterinaria.png" alt="">Veterinaria</a>
-      <a routerLink="/dashboard/suggestions" routerLinkActive="selected" class="list-item"><img class="icon-banner" src="../../../assets/img/icons/sugerencia.png" alt="">Sugerencias</a>
-      <a routerLink="/dashboard/users" routerLinkActive="selected" class="list-item">
+      <a *canPermission="{codModulo: 'M05', permiso: 'listar' }" routerLink="/dashboard/symptoms" routerLinkActive="selected" class="list-item"><img class="icon-banner" src="../../../assets/img/icons/sintomas.png" alt="">Sintomas</a>
+      <a *canPermission="{codModulo: 'M08', permiso: 'listar' }" routerLink="/dashboard/questions" routerLinkActive="selected" class="list-item"><img class="icon-banner" src="../../../assets/img/icons/preguntas perro.png" alt="">Preguntas</a>
+      <a *canPermission="{codModulo: 'M06', permiso: 'listar' }" routerLink="/dashboard/diseases" routerLinkActive="selected" class="list-item"><img class="icon-banner" src="../../../assets/img/icons/enfermedad.png" alt="">Enfermedad</a>
+      <a *canPermission="{codModulo: 'M09', permiso: 'listar' }" routerLink="/dashboard/rules" routerLinkActive="selected" class="list-item"><img class="icon-banner" src="../../../assets/img/icons/reglas.png" alt="">Reglas</a>
+      <a *canPermission="{codModulo: 'M11', permiso: 'listar' }" routerLink="/dashboard/veterinary" routerLinkActive="selected" class="list-item"><img class="icon-banner" src="../../../assets/img/icons/veterinaria.png" alt="">Veterinaria</a>
+      <a *canPermission="{codModulo: 'M10', permiso: 'listar' }" routerLink="/dashboard/suggestions" routerLinkActive="selected" class="list-item"><img class="icon-banner" src="../../../assets/img/icons/sugerencia.png" alt="">Sugerencias</a>
+      <a *canPermission="{codModulo: 'M03', permiso: 'listar' }" routerLink="/dashboard/users" routerLinkActive="selected" class="list-item">
       <i class="fas fa-user icon-banner"></i> Usuarios
       </a>
       <a (click)="logOut()" href="javascript:void(0)" class="list-item">
@@ -29,7 +29,7 @@
             <div style="width: 65px;">
               <img class="rounded img-fluid" src="https://material.angular.io/assets/img/examples/shiba2.jpg" >
             </div>
-            <a href="javascript:void(0)" class="text-muted">Logout</a>
+            <a (click)="logOut()" href="javascript:void(0)" class="text-muted">Logout</a>
           </div>
           <div class="d-flex align-items-center" style="gap: 1rem">
               <a class="text-dark" href="javascript:void(0)">

@@ -3,7 +3,11 @@
     <mat-card class="card-page-title d-flex justify-content-between align-items-center">
       <h4 class="font-weight-bold color-dark size-3 mb-0">Veterinaria</h4>
       <div class="example-button-row">
-        <button mat-button class="add-symptoms-button" (click)="editVeterinary()" style="color: #FFFFFF;">Editar</button>
+        <button 
+          *canPermission="{'codModulo': 'M11', 'permiso': 'modificar'}"
+          mat-button class="add-symptoms-button" 
+          (click)="editVeterinary()" 
+          style="color: #FFFFFF;">Editar</button>
       </div>
     </mat-card>
   </div>
@@ -13,9 +17,6 @@
         <mat-form-field appearance="standard" style="width: 80%;">
           <div class="mr-3" matPrefix>
             <label class="font-weight-bold text-muted h5">Nombre</label>
-          </div>
-          <div matSuffix>
-            <!-- <app-badge-tracking-record [createdBy]="veterinary.createdBy"></app-badge-tracking-record> -->
           </div>
           <input matInput formControlName="name" placeholder="Ingresa aqui el codigo" #code>
         </mat-form-field>

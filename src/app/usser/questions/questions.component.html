@@ -12,7 +12,12 @@
           <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
         </mat-form-field>
         <div class="d-flex align-items-center">
-          <button mat-button class="add-symptoms-button" (click)="addQuestions()" style="color: #FFFFFF;">Agregar Pregunta</button>
+          <button 
+              *canPermission="{'codModulo': 'M08', 'permiso': 'insertar'}"
+              mat-button 
+              class="add-symptoms-button" 
+              (click)="addQuestions()" 
+              style="color: #FFFFFF;">Agregar Pregunta</button>
         </div>
       </div>
 
@@ -36,10 +41,20 @@
             <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align:center;">Opciones</th>
             <td class="py-2" mat-cell *matCellDef="let row" style="text-align:center;">
               <div class="d-block">
-                <button mat-icon-button (click)="onEdit(row)"><img class="icon-banner" src="../../../assets/img/icons/editar.png" alt=""></button>
-                <button mat-icon-button (click)="onDelete(row)"><img class="icon-banner" src="../../../assets/img/icons/eliminar.png" alt=""></button>
+                <button 
+                  *canPermission="{'codModulo': 'M08', 'permiso': 'modificar'}"
+                  mat-icon-button 
+                  (click)="onEdit(row)">
+                  <img class="icon-banner" src="../../../assets/img/icons/editar.png" alt="">
+                </button>
+                <button 
+                  *canPermission="{'codModulo': 'M08', 'permiso': 'eliminar'}"
+                  mat-icon-button 
+                  (click)="onDelete(row)">
+                  <img class="icon-banner" src="../../../assets/img/icons/eliminar.png" alt="">
+                </button>
               </div>
-              <app-badge-tracking-record [createdBy]="row.createdBy"></app-badge-tracking-record>
+              <app-badge-tracking-record *canVerification="true" [createdBy]="row.createdBy"></app-badge-tracking-record>
 
             </td>
           </ng-container>

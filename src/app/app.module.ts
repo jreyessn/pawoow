@@ -14,8 +14,6 @@ import { LoginComponent } from './login/login.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +31,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatFormFieldModule,
     BrowserAnimationsModule,
   ],
-  providers: [PawwowService],
+  providers: [
+    PawwowService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

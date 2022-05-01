@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { PawwowService } from '../services/pawwow.service';
 import { DOCUMENT } from '@angular/common';
+import { PermissionsService } from '../shared/permissions-handler/permissions.service';
 
 
 @Component({
@@ -20,6 +21,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   constructor(
     public pawwowService: PawwowService, 
+    public _permissionsService: PermissionsService, 
     private router : Router,
     @Inject(DOCUMENT) private _document  
   ) { }
@@ -40,8 +42,12 @@ export class LoginComponent implements OnInit, OnDestroy {
         let token = data.result.token;
         let name = data.result.nombre;
         let apellido = data.result.apellido;
+        let verificador = data.result.verificador;
+        
         this.pawwowService.setTokenInLocalStorage(token);
-        this.pawwowService.setNameInInLocalStorage(name,apellido);
+        this.pawwowService.setNameInInLocalStorage(name,apellido,verificador);
+        this._permissionsService.resetPermissions()
+
         this.router.navigate(['/dashboard/home']);
       }else{
         console.log('Fallo inicio de Sesion');

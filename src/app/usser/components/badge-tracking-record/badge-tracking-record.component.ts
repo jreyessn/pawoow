@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { CreatedBy } from '../../../Models/Data';
 
 @Component({
   selector: 'app-badge-tracking-record',
@@ -7,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class BadgeTrackingRecordComponent implements OnInit {
 
-  @Input() createdBy: any;
+  @Input() createdBy!: CreatedBy;
 
   constructor() { }
 
