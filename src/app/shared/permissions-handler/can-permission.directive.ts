@@ -31,7 +31,7 @@ export class CanPermissionDirective {
   }
 
   updateView(permissions: Permiso[]){
-    const modFound = permissions?.find(per => per.codModulo = this.permissionsCurrent.codModulo)
+    const modFound = permissions?.find(per => per.codModulo == this.permissionsCurrent.codModulo)
 
     if(modFound && modFound[this.permissionsCurrent.permiso]){
       this.viewContainer.createEmbeddedView(this.templateRef)

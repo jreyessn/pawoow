@@ -21,7 +21,7 @@ export class CheckPermissionGuard implements CanActivate, CanActivateChild {
 
       return this._permissionsService.getPermissions().pipe(
         map(permissions => {
-          const modFound = permissions?.find(per => per.codModulo = codModulo)
+          const modFound = permissions?.find(per => per.codModulo == codModulo)
 
           return modFound && modFound.listar || 
                  state.url.indexOf("dashboard/home")? this.router.parseUrl("/") : this.router.parseUrl("dashboard/home")
@@ -36,7 +36,7 @@ export class CheckPermissionGuard implements CanActivate, CanActivateChild {
 
       return this._permissionsService.getPermissions().pipe(
         map(permissions => {
-          const modFound      = permissions?.find(per => per.codModulo = codModulo)
+          const modFound      = permissions?.find(per => per.codModulo == codModulo)
           const routeRedirect = this.router.parseUrl("dashboard/home")
 
           if(!codModulo) return true

@@ -30,10 +30,16 @@
 
 .features-one{
   display: flex;
+  align-items: center;
 }
 
 .features-two {
   padding-top: 0rem;
+}
+
+.features-two img {
+  width: 70px;
+  height: 70px;
 }
 
 .features-three{
