@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { map, mergeMap } from "rxjs/operators";
+import { finalize, map, mergeMap, tap } from "rxjs/operators";
 import { forkJoin, merge, Observable } from 'rxjs';
 import { SymptomsResponse } from '../Models/Symptoms';
 import { AddSymptomsComponent } from '../usser/add-symptoms/add-symptoms.component';
@@ -12,6 +12,8 @@ import { AddRulesComponent } from '../usser/add-rules/add-rules.component';
 import { CreatedBy } from '../Models/Data';
 import { User, UserResponse } from '../Models/User';
 import { Rol, RolResponse } from '../Models/Rol';
+import { SpinnerService } from '../shared/spinner/spinner.service';
+import { NotifyService } from '../shared/notify/notify.service';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +23,8 @@ export class PawwowService {
   private baseUrl = "http://pawwow-002-site1.ctempurl.com"
 
   constructor(private httpClient: HttpClient,
+              private _spinner: SpinnerService,
+              private _notify: NotifyService,
               private dialog: MatDialog,) { }
 
   headers: HttpHeaders = new HttpHeaders({
@@ -52,7 +56,9 @@ export class PawwowService {
           headers: reqHeader,
           //.set('pageNumber', pageNumber.toString())
         })
-        .pipe(map((data) => data));
+        .pipe(
+          map((data) => data),
+        );
     }
 
 
@@ -156,12 +162,19 @@ export class PawwowService {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${token}`
       });
+
+      this._spinner.show();
+
       return this.httpClient
       .post<any>(
         apiName,
         { codigo: null, codSintoma : codeSymptom, codDiagnostico: codeQuestion, codDiagSi: codeQuestionYes, codDiagNo: codeQuestionNot, codEnfeSi: codeDiaseaseYes, codEnfeNo: codeDiaseaseNot, inicio: isMain, estado: 1 },
         {headers: reqHeader})
-      .pipe(map((data) => data));
+      .pipe(
+        tap(() => this._notify.success("Operación realizada con éxito") ),
+        map((data) => data),
+        finalize(() => this._spinner.hide())
+      );
     }
 
     // k1k3 : Crea un Sintoma
@@ -172,13 +185,20 @@ export class PawwowService {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${token}`
       });
+
+      this._spinner.show();
+
       return this.httpClient
       .post<any>(
         apiName,
         { codigo: null, nombre : symptom, descripcion: description, estado: 1 },
         {headers: reqHeader})
-      .pipe(map((data) => data));
-    }
+        .pipe(
+          tap(() => this._notify.success("Operación realizada con éxito") ),
+          map((data) => data),
+          finalize(() => this._spinner.hide())
+        );
+     }
 
     // k1k3 : Crea un usuario
     public createUser(data: User) {
@@ -189,13 +209,23 @@ export class PawwowService {
         "Authorization": `Bearer ${token}`
       });
 
+      this._spinner.show();
+
       if(data.idUsuario > 0){
         return this.httpClient.put<any>(apiName, data, { headers })
-                   .pipe(map((data) => data));
+                           .pipe(
+                             tap(() => this._notify.success("Operación realizada con éxito") ),
+                              map((data) => data),
+                              finalize(() => this._spinner.hide())
+                            );
       }
 
       return this.httpClient.post<any>(apiName, data, { headers })
-                 .pipe(map((data) => data));
+                         .pipe(
+                           tap(() => this._notify.success("Operación realizada con éxito") ),
+                              map((data) => data),
+                              finalize(() => this._spinner.hide())
+                            );
     }
 
     // k1k3 : Edita un Sintoma
@@ -206,12 +236,19 @@ export class PawwowService {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${token}`
       });
+
+      this._spinner.show();
+
       return this.httpClient
       .put<any>(
         apiName,
         { codigo: code, nombre : symptom, descripcion: description, estado: 1 },
         {headers: reqHeader})
-      .pipe(map((data) => data));
+        .pipe(
+          tap(() => this._notify.success("Operación realizada con éxito") ),
+          map((data) => data),
+          finalize(() => this._spinner.hide())
+        );
     }
 
     // k1k3 : Elimina un Sintoma
@@ -222,11 +259,18 @@ export class PawwowService {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${token}`
       });
+
+      this._spinner.show();
+      
       return this.httpClient
       .delete<any>(
         apiName,
         {headers: reqHeader})
-      .pipe(map((data) => data));
+      .pipe(
+        tap(() => this._notify.success("Operación realizada con éxito") ),
+          map((data) => data),
+          finalize(() => this._spinner.hide())
+        );
     }
 
     // k1k3 : Elimina un usuario
@@ -237,11 +281,18 @@ export class PawwowService {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${token}`
       });
+
+      this._spinner.show();
+
       return this.httpClient
       .delete<any>(
         apiName,
         {headers: reqHeader})
-      .pipe(map((data) => data));
+      .pipe(
+        tap(() => this._notify.success("Operación realizada con éxito") ),
+          map((data) => data),
+          finalize(() => this._spinner.hide())
+        );
     }
 
 
@@ -255,6 +306,9 @@ export class PawwowService {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${token}`
       });
+
+      this._spinner.show();
+
       return this.httpClient
       .post<any>(
         apiName,
@@ -270,7 +324,11 @@ export class PawwowService {
           ]
         },
         {headers: reqHeader})
-      .pipe(map((data) => data));
+      .pipe(
+        tap(() => this._notify.success("Operación realizada con éxito") ),
+          map((data) => data),
+          finalize(() => this._spinner.hide())
+        );
     }
 
 
@@ -282,12 +340,19 @@ export class PawwowService {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${token}`
       });
+
+      this._spinner.show();
+
       return this.httpClient
       .put<any>(
         apiName,
         { codigo: code, nombre : symptom, descripcion: description, estado: 1 },
         {headers: reqHeader})
-      .pipe(map((data) => data));
+      .pipe(
+        tap(() => this._notify.success("Operación realizada con éxito") ),
+          map((data) => data),
+          finalize(() => this._spinner.hide())
+        );
     }
 
     // k1k3 : Edita una Enfermedad
@@ -298,12 +363,19 @@ export class PawwowService {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${token}`
       });
+
+      this._spinner.show();
+
       return this.httpClient
       .put<any>(
         apiName,
         { codigo: code, descripcion : desc, estado: 1 },
         {headers: reqHeader})
-      .pipe(map((data) => data));
+      .pipe(
+        tap(() => this._notify.success("Operación realizada con éxito") ),
+          map((data) => data),
+          finalize(() => this._spinner.hide())
+        );
     }
 
     // k1k3 : Elimina un Enfermedad
@@ -314,11 +386,18 @@ export class PawwowService {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${token}`
       });
+
+      this._spinner.show();
+
       return this.httpClient
       .delete<any>(
         apiName,
         {headers: reqHeader})
-      .pipe(map((data) => data));
+      .pipe(
+        tap(() => this._notify.success("Operación realizada con éxito") ),
+          map((data) => data),
+          finalize(() => this._spinner.hide())
+        );
     }
 
       // k1k3 : Elimina una pregunta
@@ -329,11 +408,18 @@ export class PawwowService {
           "Content-Type": "application/json",
           "Authorization": `Bearer ${token}`
         });
+
+        this._spinner.show();
+
         return this.httpClient
         .delete<any>(
           apiName,
           {headers: reqHeader})
-        .pipe(map((data) => data));
+        .pipe(
+          tap(() => this._notify.success("Operación realizada con éxito") ),
+          map((data) => data),
+          finalize(() => this._spinner.hide())
+        );
       }
 
     // k1k3 : Obtiene las Preguntas - CAMBIAR!
@@ -367,13 +453,20 @@ export class PawwowService {
           "Content-Type": "application/json",
           "Authorization": `Bearer ${token}`
         });
+
+        this._spinner.show();
+
         return this.httpClient
         .post<any>(
           apiName,
           { codigo: null, descripcion: description, estado: 1,
             sintomas: codesSymptoms},
           {headers: reqHeader})
-        .pipe(map((data) => data));
+          .pipe(
+            tap(() => this._notify.success("Operación realizada con éxito") ),
+            map((data) => data),
+            finalize(() => this._spinner.hide())
+          );
       }
 
 
@@ -403,6 +496,9 @@ export class PawwowService {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${token}`
       });
+      
+      this._spinner.show()
+
       return this.httpClient
       .put<any>(
         apiName,
@@ -416,7 +512,11 @@ export class PawwowService {
           urlFacebook: urlfacebook,
           idPageFacebook: idfacebook },
         {headers: reqHeader})
-      .pipe(map((data) => data));
+        .pipe(
+          tap(() => this._notify.success("Operación realizada con éxito") ),
+          map((data) => data),
+          finalize(() => this._spinner.hide())
+        );
     }
 
     // k1k3 : Obtiene las sugerencias

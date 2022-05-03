@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router, CanActivateChild } from '@angular/router';
 import { Observable, of } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { finalize, map } from 'rxjs/operators';
 import { PermissionsService } from './permissions.service';
 
 @Injectable({
@@ -11,7 +11,7 @@ export class CheckPermissionGuard implements CanActivate, CanActivateChild {
 
   constructor(
     private _permissionsService: PermissionsService,
-    private router: Router
+    private router: Router,
   ){}
 
   canActivate(
@@ -34,6 +34,7 @@ export class CheckPermissionGuard implements CanActivate, CanActivateChild {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       const codModulo = route.data['codModulo']
 
+
       return this._permissionsService.getPermissions().pipe(
         map(permissions => {
           const modFound      = permissions?.find(per => per.codModulo == codModulo)
@@ -42,7 +43,7 @@ export class CheckPermissionGuard implements CanActivate, CanActivateChild {
           if(!codModulo) return true
 
           return (modFound && modFound.listar) ?? (routeRedirect)                
-        })
+        }),
       )
   }
   

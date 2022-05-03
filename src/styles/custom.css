@@ -101,3 +101,36 @@
     width: 25%;
   }
   
+
+  .notify-success {
+    background-color: rgb(34 197 94);
+    color: white !important;
+  }
+
+  .notify-success button {
+    color: white !important;
+  }
+  
+
+  .notify-error {
+    background-color: rgb(220 38 38);
+    color: white !important;
+  }
+
+  .notify-error button {
+    color: white !important;
+  }
+
+  .notify-info {
+    background-color: rgb(8 145 178);
+    color: white !important;
+  }
+
+  .notify-info button {
+    color: white !important;
+  }
+
+  .cdk-overlay-backdrop.cdk-overlay-backdrop-showing.dark-backdrop {
+    background: #000;
+    opacity: 0.75 !important;
+  }

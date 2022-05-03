@@ -5,6 +5,7 @@ import { NgForm } from '@angular/forms';
 import { PawwowService } from '../services/pawwow.service';
 import { DOCUMENT } from '@angular/common';
 import { PermissionsService } from '../shared/permissions-handler/permissions.service';
+import { NotifyService } from '../shared/notify/notify.service';
 
 
 @Component({
@@ -23,6 +24,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     public pawwowService: PawwowService, 
     public _permissionsService: PermissionsService, 
     private router : Router,
+    private _notify: NotifyService,
     @Inject(DOCUMENT) private _document  
   ) { }
 
@@ -37,6 +39,9 @@ export class LoginComponent implements OnInit, OnDestroy {
   OnSubmit(email,password){
     console.log('into sign in');
     this.pawwowService.userAutentication(email,password).subscribe((data : any)=>{
+      
+      this._notify.info("¡Bienvenido "+data.result.nombre+"!")
+
       console.log(data);
       if(data.statusCode === 1000){
         let token = data.result.token;
@@ -54,6 +59,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       }
     },
     (err : HttpErrorResponse)=>{
+      this._notify.error("Las credenciales son inválidas")
       console.log(err);
     });
   }

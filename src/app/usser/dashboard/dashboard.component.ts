@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PawwowService } from 'src/app/services/pawwow.service';
+import { NotifyService } from 'src/app/shared/notify/notify.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,6 +13,7 @@ export class DashboardComponent implements OnInit {
   name!: string;
 
   constructor(public pawwowService: PawwowService,
+              private _notify: NotifyService,
               private router : Router) { }
 
   ngOnInit(): void {
@@ -21,6 +23,7 @@ export class DashboardComponent implements OnInit {
   public logOut(){
     console.log('logOut');
     this.pawwowService.LogOut();
+    this._notify.info("Desconectado correctamente")
     this.router.navigate(['/']);
   }
 

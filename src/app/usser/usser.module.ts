@@ -44,6 +44,8 @@ import { BadgeTrackingRecordComponent } from './components/badge-tracking-record
 import { UsersComponent } from './users/users.component';
 import { AddUsersComponent } from './add-users/add-users.component';
 import { PermissionsHandlerModule } from '../shared/permissions-handler/permissions-handler.module';
+import { NotifyModule } from '../shared/notify/notify.module';
+import { SpinnerModule } from '../shared/spinner/spinner.module';
 
 
 @NgModule({
@@ -93,7 +95,9 @@ import { PermissionsHandlerModule } from '../shared/permissions-handler/permissi
     MatTabsModule,
     MatListModule,
     MatProgressSpinnerModule,
-    PermissionsHandlerModule
+    PermissionsHandlerModule,
+    NotifyModule,
+    SpinnerModule
   ],
 })
 export class UsserModule { }
